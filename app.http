@@ -1,0 +1,91 @@
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "username": "adam_richard",
+  "password": "richard_567",
+  "name": "Adam Richard",
+  "gender": "male"
+}
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+  "username":"JoeBiden",
+  "password":"biden@123"
+}
+
+GET http://localhost:3000/user/tweets/feed/
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvZUJpZGVuIiwiaWF0IjoxNzEyODIzMjMwfQ.4jIfKPVin5bYxTDqHfqTVSPpVCk7FIiWZ0cnReKacug
+ 
+
+GET http://localhost:3000/user/following/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvZUJpZGVuIiwiaWF0IjoxNzE0Mzg4NzA5fQ.tfJ0SNJ_lNwh31zx3ljQ_-FOx5H3dnqT7x8XVXas9KQ
+Content-Type: application/json
+
+
+
+
+
+GET http://localhost:3000/user/followers/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvZUJpZGVuIiwiaWF0IjoxNzE0Mzg4NzA5fQ.tfJ0SNJ_lNwh31zx3ljQ_-FOx5H3dnqT7x8XVXas9KQ
+Content-Type: application/json
+
+
+GET http://localhost:3000/tweets/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvZUJpZGVuIiwiaWF0IjoxNzE0Mzg4NzA5fQ.tfJ0SNJ_lNwh31zx3ljQ_-FOx5H3dnqT7x8XVXas9KQ
+Content-Type: application/json
+
+
+
+GET http://localhost:3000/tweets/1/likes/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvZUJpZGVuIiwiaWF0IjoxNzE0Mzg4NzA5fQ.tfJ0SNJ_lNwh31zx3ljQ_-FOx5H3dnqT7x8XVXas9KQ
+Content-Type: application/json
+
+
+GET http://localhost:3000/user/tweets/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvZUJpZGVuIiwiaWF0IjoxNzE0Mzg4NzA5fQ.tfJ0SNJ_lNwh31zx3ljQ_-FOx5H3dnqT7x8XVXas9KQ
+Content-Type: application/json
+
+###
+# Scenario 1: Request without JWT token
+###
+
+GET http://localhost:3000/tweets/1/replies/
+
+###
+
+###
+# Scenario 2: Request with valid JWT token, but user not following the author of the tweet
+###
+
+GET http://localhost:3000/tweets/6/replies/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvZUJpZGVuIiwiaWF0IjoxNzE0Mzg4NzA5fQ.tfJ0SNJ_lNwh31zx3ljQ_-FOx5H3dnqT7x8XVXas9KQ
+Content-Type: application/json
+###
+
+###
+# Scenario 3: Request with valid JWT token, and user following the author of the tweet
+###
+
+GET http://localhost:3000/tweets/54321/replies/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvZUJpZGVuIiwiaWF0IjoxNzE0Mzg4NzA5fQ.tfJ0SNJ_lNwh31zx3ljQ_-FOx5H3dnqT7x8XVXas9KQ
+Content-Type: application/json
+
+
+
+
+POST http://localhost:3000/user/tweets/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvZUJpZGVuIiwiaWF0IjoxNzE0Mzg4NzA5fQ.tfJ0SNJ_lNwh31zx3ljQ_-FOx5H3dnqT7x8XVXas9KQ
+Content-Type: application/json 
+
+Request
+
+{
+   "tweet": "The Mornings..."
+}
+
+DELETE http://localhost:3000/tweets/1/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkpvZUJpZGVuIiwiaWF0IjoxNzE0Mzg4NzA5fQ.tfJ0SNJ_lNwh31zx3ljQ_-FOx5H3dnqT7x8XVXas9KQ
+Content-Type: application/json
